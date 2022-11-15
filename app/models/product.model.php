@@ -8,34 +8,6 @@ class productModel {
         $this->db = new PDO('mysql:host=localhost;'.'dbname=db_producto;charset=utf8', 'root', '');
     }
 
-    //Devuelve lista de productos completa.
-    public function getAllProducts() {
-
-        $query = $this->db->prepare("SELECT producto.*, categoria.* FROM producto INNER JOIN categoria ON producto.id_category = categoria.id_category");
-        $query->execute();
-        $products = $query->fetchAll(PDO::FETCH_OBJ); 
-        
-        return $products;
-    }
-
-    /*
-    public function orderBy($sort, $order){
-        $query = $this->db->prepare("SELECT producto.*, categoria.* FROM producto INNER JOIN categoria ON producto.id_category = categoria.id_category ORDER BY $sort $order");
-        $query->execute();
-
-        return $query->fetchAll(PDO::FETCH_OBJ);
-    }
-
-    public function pagination($limit, $offset){
-        $query = $this->db->prepare("SELECT producto.*, categoria.* FROM producto INNER JOIN categoria ON producto.id_category = categoria.id_category LIMIT $limit OFFSET $offset");
-        $query->execute();
-
-        return $query->fetchAll(PDO::FETCH_OBJ);
-
-    }
-    */
-
-    
     public function getAllByField($orderByField, $order, $limit, $page, $field, $fieldValue){
         $offset = ($limit * $page) - $limit;
         $params = []; 
@@ -61,13 +33,6 @@ class productModel {
         $product = $query->fetch(PDO::FETCH_OBJ);
         
         return $product;
-    }
-    
-    public function filterBy($fieldValue){
-        $query = $this->db->prepare("SELECT producto.*, categoria.* FROM producto INNER JOIN categoria ON producto.id_category = categoria.id_category WHERE category = $fieldValue");
-        $query->execute();
-
-        return $query->fetchAll(PDO::FETCH_OBJ);
     }
     
     public function insertProduct($product, $detail, $price, $id_category) {
