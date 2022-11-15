@@ -14,8 +14,11 @@ El endpoint de la API es: http://localhost/web2/TPE2-CSR/growshop/api/products
 Esta API fue creada para ofrecer un servicio RESTFull, y trabaja utilizando los siguientes metodos HTTP:
 
 • GET: Accede a los recursos (productos).
+
 • POST: Agrega un nuevo recurso.
+
 • PUT: Actuliza/modifica un recurso ya existente.
+
 • DELETE: Elimina un recurso.
 
 El formato de transferencia que admite esta API para enviar y recibir respuestas es JSON.
@@ -82,16 +85,19 @@ En el caso de omitir algun campo, los parametros de consulta cuentan con un valo
 
 ## ORDENAMIENTO
 Los resultados de las solicitudes GET se pueden ordenar agregando los parametros "orderByField" y "order". A continuacion se deja un ejemplo de una busqueda que ordene productos segun su id de manera ascendente:
+
 http://localhost/web2/TPE2-CSR/growshop/api/products?order=asc&orderByField=id_product
 
 
 ## ORDENAMIENTO CON FILTRO
 Ademas de la busqueda con el tipo de ordenamiento que agrupa en primer lugar los productos en base al campo especificado, existe por otro lado un tipo de busqueda con filtro, en la cual los resultados nos arrojaran UNICAMENTE los productos que compartan las especificaciones declaradas en los parametros "field" y "fieldValue". Como se marco anteriormente, las opciones del parametro "field" seran "id_product", "product", "detail", "price", "id_category, y "category". En cambio, el valor del parametro "fieldValue" dependera del campo elegido en "field". A continuacion se muestra un ejemplo de busqueda de productos ordenados de manera descendente por precio, donde el producto en si sea una "maceta":
+
 http://localhost/web2/TPE2-CSR/growshop/api/products/?orderByField=price&order=desc&field=product&fieldValue=maceta
 
 
 ## PAGINACION
 A los resultados de los tipos de ordenamientos explicados anteriormente, es posible paginarlos agregando un limite (limit) maximo de productos para visualizar, y la pagina (page) que se desea observar. A continuacion se deja un ejemplo en el que se buscan productos ordenados por su id de manera ascendente, donde su categoria sea Accesorios, y donde se visualicen los 5 primeros productos de la pagina 1:
+
 http://localhost/web2/TPE2-CSR/growshop/api/products/?orderByField=id_product&order=asc&limit=5&page=1&field=category&fieldValue=Accesorios
 
 
