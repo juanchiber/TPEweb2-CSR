@@ -54,19 +54,30 @@ Dicha solicitud permite actualizar o modificar un producto YA EXISTENTE en la ba
 La API cuenta con distintos parametros de busqueda para el filtrado, ordenamiento y paginado de los productos que se ofrecen. Los mismos son:
 
 • orderByField-> se elije un campo para jerarquizar/ordenar los productos en base al mismo. Las opciones son "id_product", "product", "detail", "price", "id_category, y "category".
+
 • order-> en base al campo elegido en "orderByField", en este campo se determina si los productos se ordenan de manera ascendente (asc) o descendente (desc).
+
 • limit-> se especifica la cantidad de productos que se quieren visualizar como maximo.
+
 • page-> de la mano con "limit", "page" da la opcion de seleccionar la pagina que se desea ver con el listado de productos.
+
 • field-> ademas del ordenamiento que trae en primer lugar los productos especificados en ese campo, "field" permite filtrar los productos en base al campo que aqui se especifica. Las opciones son "id_product", "product", "detail", "price", "id_category, y "category".
+
 • fieldValue-> aqui se especifica el valor del campo seleccionado en "field". El resultado traera SOLO los productos que cumplan con dichos parametros. 
 
 En el caso de omitir algun campo, los parametros de consulta cuentan con un valor por defecto, por lo que las solicitudes GET devolveran los siguientes valores:
-• orderByField-> "id_product"
-• order-> "asc"
-• limit-> 100
-• page-> 1
-• field-> null
-• fieldValue-> null
+
+• orderByField-> "id_product".
+
+• order-> "asc".
+
+• limit-> 100.
+
+• page-> 1.
+
+• field-> null.
+
+• fieldValue-> null.
 
 
 ## ORDENAMIENTO
@@ -87,9 +98,14 @@ http://localhost/web2/TPE2-CSR/growshop/api/products/?orderByField=id_product&or
 ## CODIGOS DE ERROR
 Es posible que se cometan errores de tipeo u otros en las solicitudes que realiza. La API cuenta con errores especificos que se acompañan de un mensaje que los especifica. Los distintos tipos de errores son:
 • 400 -> "Bad request". Solicitud incorrecta.
+
 • 404 -> "Not found". Producto no encontrado.
+
 • 500 -> "Internal Server Error". Error interno del servidor.
 
+
 Por otro lado, la API cuenta tambien con mensajes de confirmacion, los mismos son:
+
 • 200 => "OK". Solicitud correcta/aceptada.
+
 • 201 => "Created". Producto agregado con exito.
