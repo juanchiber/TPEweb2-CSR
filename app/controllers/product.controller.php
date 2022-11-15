@@ -40,9 +40,9 @@ class productApiController {
                 $products = $this->model->getAll($orderByField, $order, $limit, $page);
             }
 
-            if($products != 0){
-                $this->view->response($products, 200);
-            }
+            if($products){
+                return $this->view->response($products, 200);
+            }   
             else{
                 $this->view->response("No existen productos para su solicitud", 404);
             }
